@@ -1,6 +1,6 @@
 {
   "name": "gravatars",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get Gravatar image url",
   "main": "gravatars.js",
   "scripts": {
