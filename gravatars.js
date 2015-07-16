@@ -5,11 +5,16 @@ var md5 = require('md5');
 var querystring = require('querystring');
 
 var merge = function(options, def) {
+	if( Object.prototype.toString.call(options) !== "[object Object]" ) { 
+		options = {}; 
+	}
+
 	for( var k in def ) {
 		if(!options[k]) {
 			options[k] = def[k];
 		}
 	}
+
 	return options;
 };
 
@@ -27,7 +32,7 @@ var calcHash = function(email) {
 };
 
 var gravatarImage = function(email, options) {
-	merge(options, { 
+	options = merge(options, { 
 		protocol: 'http',  // 'http' or 'https'
 		extension: '.jpg', // '.jpg' or '',
 		size: 80,
