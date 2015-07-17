@@ -55,6 +55,3 @@ var gravatarImage = function(email, options) {
 };
 
 module.exports = gravatarImage;
-
-
-//console.log(gravatarImage('thisisafakeemail@fakedomain.com'));
