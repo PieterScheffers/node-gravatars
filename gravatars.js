@@ -1,7 +1,7 @@
 // https://nl.gravatar.com/site/implement/hash/
 // https://nl.gravatar.com/site/implement/images/
 
-var md5 = require('md5');
+var crypto = require('crypto');
 var querystring = require('querystring');
 
 var merge = function(options, def) {
@@ -22,13 +22,17 @@ var baseUrl = function(protocol) {
 	return protocol === 'https' ? 'https://secure.gravatar.com' : 'http://www.gravatar.com';
 };
 
+var hashMD5 = function(data) {
+	return crypto.createHash('md5').update(data).digest('hex');
+};
+
 var calcHash = function(email) {
 	if( typeof email !== 'string' || email.indexOf('@') === -1 ) {
 		throw new Error('Email must be of type string and must contain an @-sign');
 	}
 
-	email = email.trim().toLowerCase();
-	return md5(email);
+	email = email.replace(/\s/g, '').trim().toLowerCase();
+	return hashMD5(email);
 };
 
 var gravatarImage = function(email, options) {
@@ -51,3 +55,6 @@ var gravatarImage = function(email, options) {
 };
 
 module.exports = gravatarImage;
+
+
+//console.log(gravatarImage('thisisafakeemail@fakedomain.com'));
