@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/PieterScheffers/node-gravatars#readme",
   "devDependencies": {
-    "jest-cli": "^0.4.15"
+    "jest-cli": ">=0.4.15"
   }
 }
